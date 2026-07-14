@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://auditproindia.com/sitemap.xml",
+    sitemap: "https://tamilvendhan-demon.github.io/sttc-website/sitemap.xml",
   };
 }

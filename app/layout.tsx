@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   title: "AuditPro India | Tax, GST, Audit & Compliance Consultancy",
   description: "Premium tax, GST, audit, bookkeeping, and company registration consultancy services for individuals and businesses in India.",
   keywords: ["tax consultancy", "GST", "income tax", "audit", "company registration", "TDS", "bookkeeping"],
-  metadataBase: new URL("https://auditproindia.com"),
+  metadataBase: new URL("https://tamilvendhan-demon.github.io/sttc-website"),
   openGraph: {
     title: "AuditPro India",
     description: "Professional tax and compliance consultancy services in India.",
     type: "website",
-    url: "https://auditproindia.com",
+    url: "https://tamilvendhan-demon.github.io/sttc-website",
   },
   twitter: {
     card: "summary_large_image",
