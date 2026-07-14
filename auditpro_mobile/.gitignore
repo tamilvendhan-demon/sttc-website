@@ -1,0 +1,17 @@
+# Flutter/Dart/Pub related
+.packages
+.pub-cache/
+.dart_tool/
+build/
+
+# Android/IntelliJ related
+.idea/
+*.iml
+.gradle/
+
+# VS Code related
+.vscode/
+
+# Mac/Windows related
+.DS_Store
+Thumbs.db
