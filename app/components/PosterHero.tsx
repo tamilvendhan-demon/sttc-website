@@ -3,16 +3,16 @@ import Link from "next/link";
 
 export default function PosterHero() {
   return (
-    <section className="relative overflow-hidden bg-[#f6f0de] py-20 text-[#1e1b14] lg:py-28">
+    <section id="home" className="relative overflow-hidden bg-[#f6f0de] py-20 text-[#1e1b14] lg:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(201,154,69,0.25),_transparent_34%),linear-gradient(120deg,_rgba(11,55,51,0.06),_rgba(255,255,255,0))]" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#155a50]">Sree Thirumurugan Tax Consultancy</p>
           <h1 className="mt-6 text-4xl font-semibold leading-tight text-[#0b3733] sm:text-5xl lg:text-6xl">
-            Your trusted partner for <span className="text-[#c99a45]">tax, audit, and business growth</span>.
+            Trusted tax guidance for <span className="text-[#c99a45]">businesses, professionals, and families</span>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4a473d]">
-            We deliver premium compliance, financial clarity, and strategic advisory services for individuals, startups, SMEs, and growing enterprises across India.
+            From GST filing and income tax planning to audits, registrations, and business advisory, we simplify compliance and protect your growth with clarity and precision.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0b3733] px-6 py-3 text-sm font-semibold text-[#f6f0de] transition hover:bg-[#155a50]">
@@ -21,6 +21,11 @@ export default function PosterHero() {
             <Link href="#services" className="inline-flex items-center justify-center rounded-full border border-[#c99a45] px-6 py-3 text-sm font-semibold text-[#0b3733] transition hover:bg-[#efe6cc]">
               Explore Services
             </Link>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium text-[#0b3733]">
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2">PAN / GST / TDS support</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2">Audit ready documentation</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2">Prompt follow-up</span>
           </div>
         </div>
 

@@ -7,7 +7,49 @@ const slots = ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"];
 
 export default function AppointmentSection() {
   const [selectedSlot, setSelectedSlot] = useState<string>(slots[0]);
-  const [submitted, setSubmitted] = useState(false);
+  const [service, setService] = useState("Income Tax Filing");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [notes, setNotes] = useState("");
+  const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!name || !email || !phone) {
+      setStatus("Please fill your name, email, and phone number.");
+      return;
+    }
+
+    setLoading(true);
+    setStatus(null);
+
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        service,
+        notes,
+        preferredSlot: selectedSlot,
+        source: "appointment",
+      }),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      setStatus("Consultation request saved. Our team will follow up shortly.");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setNotes("");
+    } else {
+      setStatus(result.error || "We could not save your request. Please try again.");
+    }
+    setLoading(false);
+  };
 
   return (
     <section className="bg-[#f6f0de] py-20">
@@ -46,22 +88,42 @@ export default function AppointmentSection() {
                   </button>
                 ))}
               </div>
-              <div className="mt-6">
-                <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Your preferred service</label>
-                <select className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none">
-                  <option>Income Tax Filing</option>
-                  <option>GST</option>
-                  <option>Audit</option>
-                  <option>Company Registration</option>
-                </select>
+              <div className="mt-6 grid gap-4">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Your name</label>
+                  <input value={name} onChange={(event) => setName(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Your full name" />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Email</label>
+                    <input value={email} onChange={(event) => setEmail(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="you@example.com" type="email" />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Phone</label>
+                    <input value={phone} onChange={(event) => setPhone(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="98765 43210" />
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Preferred service</label>
+                  <select value={service} onChange={(event) => setService(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none">
+                    <option>Income Tax Filing</option>
+                    <option>GST</option>
+                    <option>Audit</option>
+                    <option>Company Registration</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Brief requirement</label>
+                  <textarea value={notes} onChange={(event) => setNotes(event.target.value)} className="min-h-[100px] w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Tell us what you need help with" />
+                </div>
               </div>
-              <button className="mt-6 rounded-full bg-[#c99a45] px-5 py-3 text-sm font-semibold text-[#0b3733]" onClick={() => setSubmitted(true)}>
-                Confirm Appointment
+              <button className="mt-6 rounded-full bg-[#c99a45] px-5 py-3 text-sm font-semibold text-[#0b3733] disabled:cursor-not-allowed disabled:opacity-70" onClick={handleSubmit} disabled={loading}>
+                {loading ? "Saving..." : "Confirm Appointment"}
               </button>
-              {submitted ? (
-                <div className="mt-4 flex items-center gap-2 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+              {status ? (
+                <div className={`mt-4 flex items-center gap-2 rounded-2xl border p-4 text-sm ${status.includes("saved") || status.includes("follow") ? "border-green-200 bg-green-50 text-green-800" : "border-[#d8c892] bg-[#f6f0de] text-[#0b3733]"}`}>
                   <CheckCircle2 className="h-5 w-5" />
-                  Appointment request saved. We will contact you shortly.
+                  {status}
                 </div>
               ) : null}
             </div>

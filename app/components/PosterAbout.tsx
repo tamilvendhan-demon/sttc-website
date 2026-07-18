@@ -5,10 +5,10 @@ export default function PosterAbout() {
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#c99a45]">About</p>
           <h2 className="mt-3 text-3xl font-semibold text-[#0b3733] sm:text-4xl">
-            Precision-led advisory with elegant execution.
+            Experienced advisory with a calm, dependable approach.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#4a473d]">
-            Sree Thirumurugan Tax Consultancy combines deep regulatory expertise with a modern, premium client experience. Our approach is rooted in accuracy, speed, and long-term business support.
+            We bring years of practical experience in taxation, compliance, and financial operations to help clients stay compliant, reduce stress, and make informed decisions without delays.
           </p>
         </div>
         <div className="rounded-[28px] border border-[#d8c892] bg-[#f6f0de] p-8 shadow-sm">
