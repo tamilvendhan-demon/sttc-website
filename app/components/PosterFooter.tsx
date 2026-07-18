@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PosterFooter() {
   return (
     <footer id="contact" className="border-t border-[#d8c892] bg-[#0b3733] py-16 text-[#f6f0de]">
