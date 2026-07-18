@@ -15,13 +15,6 @@ export interface LeadEntry {
 
 const filePath = path.join(process.cwd(), 'data', 'leads.json');
 
-function ensureFile() {
-  const dir = path.dirname(filePath);
-  if (!fs.access) {
-    return;
-  }
-}
-
 async function readLeads(): Promise<LeadEntry[]> {
   try {
     const data = await fs.readFile(filePath, 'utf8');
