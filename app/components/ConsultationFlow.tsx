@@ -59,13 +59,13 @@ export default function ConsultationFlow() {
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#c99a45]">Consultation Flow</p>
-            <h2 className="mt-3 text-3xl font-semibold text-[#0b3733] sm:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-semibold text-[#0b3733] sm:text-4xl">
               Share your details and receive a secure consultation request.
             </h2>
             <p className="mt-5 text-lg leading-8 text-[#4a473d]">
               This experience simulates a real consultancy workflow with form capture, OTP verification, and downloadable summary output.
             </p>
-            <div className="mt-8 rounded-[24px] border border-[#d8c892] bg-[#f6f0de] p-6">
+            <div className="mt-8 rounded-[24px] border border-[#d8c892] bg-[#f6f0de] p-6 shadow-[0_16px_35px_rgba(11,55,51,0.04)]">
               <div className="flex items-center gap-3 text-[#0b3733]">
                 <ShieldCheck className="h-5 w-5 text-[#155a50]" />
                 <p className="font-semibold">Secure and privacy-conscious form handling</p>

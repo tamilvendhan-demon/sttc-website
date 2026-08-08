@@ -14,10 +14,15 @@ export default function ClientLoginSection() {
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#e7c97c]">Secure Access</p>
-              <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Client and auditor access, built for modern compliance workflows.</h2>
+              <h2 className="mt-3 text-balance text-3xl font-semibold sm:text-4xl">Client and auditor access, built for modern compliance workflows.</h2>
               <p className="mt-5 text-lg leading-8 text-[#dfe8e4]">
                 Provide secure login experiences for clients, auditors, and administrators with a premium portal-first interface.
               </p>
+              <div className="mt-8 flex flex-wrap gap-3 text-sm text-[#dfe8e4]">
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Protected access</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Audit-ready records</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Fast client updates</span>
+              </div>
               <div className="mt-8 inline-flex rounded-full border border-white/15 bg-white/10 p-1">
                 <button className={`rounded-full px-4 py-2 text-sm font-semibold ${mode === "client" ? "bg-[#c99a45] text-[#0b3733]" : "text-[#f6f0de]"}`} onClick={() => setMode("client")}>Client Login</button>
                 <button className={`rounded-full px-4 py-2 text-sm font-semibold ${mode === "auditor" ? "bg-[#c99a45] text-[#0b3733]" : "text-[#f6f0de]"}`} onClick={() => setMode("auditor")}>Auditor Login</button>

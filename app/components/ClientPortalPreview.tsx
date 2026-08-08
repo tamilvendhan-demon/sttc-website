@@ -18,12 +18,17 @@ export default function ClientPortalPreview() {
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#e7c97c]">Client Portal</p>
-              <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+              <h2 className="mt-3 text-balance text-3xl font-semibold sm:text-4xl">
                 A modern portal experience for every client.
               </h2>
               <p className="mt-5 text-lg leading-8 text-[#dfe8e4]">
                 Our platform experience brings appointment booking, secure document handling, real-time status monitoring, and communication into one premium workflow.
               </p>
+              <div className="mt-8 flex flex-wrap gap-3 text-sm text-[#dfe8e4]">
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Document tracking</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Live updates</span>
+                <span className="rounded-full border border-white/15 bg-white/5 px-3 py-2">Client-first support</span>
+              </div>
               <Link href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#c99a45] px-5 py-3 text-sm font-semibold text-[#0b3733] transition hover:bg-[#e7c97c]">
                 Explore Portal <ArrowRight className="h-4 w-4" />
               </Link>

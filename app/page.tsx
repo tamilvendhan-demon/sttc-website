@@ -2,8 +2,10 @@ import SiteNavbar from "./components/SiteNavbar";
 import PosterHero from "./components/PosterHero";
 import PosterServices from "./components/PosterServices";
 import PosterAbout from "./components/PosterAbout";
+import IndustriesSection from "./components/IndustriesSection";
 import ConsultationFlow from "./components/ConsultationFlow";
 import ClientPortalPreview from "./components/ClientPortalPreview";
+import WhyChooseUs from "./components/WhyChooseUs";
 import TestimonialsSection from "./components/TestimonialsSection";
 import FaqSection from "./components/FaqSection";
 import ContactSection from "./components/ContactSection";
@@ -19,6 +21,8 @@ export default function Home() {
       <PosterHero />
       <PosterServices />
       <PosterAbout />
+      <IndustriesSection />
+      <WhyChooseUs />
       <ConsultationFlow />
       <ClientPortalPreview />
       <TestimonialsSection />

@@ -8,7 +8,7 @@ export const siteContent = {
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Industries", href: "#industries" },
-    { label: "Resources", href: "#insights" },
+    { label: "Why Us", href: "#why-us" },
     { label: "Contact", href: "#contact" },
     { label: "Book Consultation", href: "#contact" },
     { label: "Login", href: "/admin" },
