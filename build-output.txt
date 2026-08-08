@@ -1,0 +1,7 @@
+npm warn "type" is being parsed as a normal command line argument.
+npm warn Unknown cli config "-- BUILD ---;". This will stop working in the next major version of npm.
+
+> sttc-website@0.1.0 build
+> next build ; echo EXIT:True; echo  --- TEST ---; type test-output.txt; echo type build-output.txt
+
+Invalid project directory provided, no such directory: C:\Users\Tamilvendhan\sttc-website\;

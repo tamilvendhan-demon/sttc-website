@@ -16,9 +16,14 @@ export default function PosterFooter() {
             <p>📧 support@auditproindia.com</p>
             <p>📞 +91 98765 43210</p>
             <p>📍 Chennai, Tamil Nadu</p>
-            <Link href="/admin" className="mt-3 inline-flex rounded-full border border-[#d8c892]/60 px-4 py-2 text-[#f6f0de] transition hover:bg-white/10">
-              Open admin dashboard
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link href="/admin" className="inline-flex rounded-full border border-[#d8c892]/60 px-4 py-2 text-[#f6f0de] transition hover:bg-white/10">
+                Open admin dashboard
+              </Link>
+              <Link href="#contact" className="inline-flex rounded-full bg-[#c99a45] px-4 py-2 font-semibold text-[#0b3733] transition hover:bg-[#e7c97c]">
+                Book consultation
+              </Link>
+            </div>
           </div>
         </div>
       </div>

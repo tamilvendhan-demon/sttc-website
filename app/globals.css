@@ -3,6 +3,16 @@
 :root {
   --background: #f6f0de;
   --foreground: #0f172a;
+  --panel: rgba(255, 255, 255, 0.75);
+  --panel-strong: #ffffff;
+  --brand-dark: #0b3733;
+  --brand-mid: #155a50;
+  --brand-gold: #c99a45;
+  --brand-gold-soft: #e7c97c;
+  --brand-soft: #f6f0de;
+  --border: #d8c892;
+  --text: #1e1b14;
+  --muted: #4a473d;
 }
 
 html {
@@ -11,9 +21,9 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(201, 154, 69, 0.12), transparent 26%),
-    linear-gradient(180deg, #f6f0de 0%, #fffaf2 100%);
-  color: var(--foreground);
+    radial-gradient(circle at top, rgba(201, 154, 69, 0.12), transparent 25%),
+    linear-gradient(180deg, #f6f0de 0%, #fffaf3 100%);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
@@ -22,12 +32,33 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   max-width: 100%;
   display: block;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
 ::selection {
-  background: #c99a45;
-  color: #0b3733;
+  background: rgba(201, 154, 69, 0.35);
+  color: var(--brand-dark);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-panel {
+    background: var(--panel);
+  }
 }

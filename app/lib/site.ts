@@ -7,8 +7,11 @@ export const siteContent = {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Customer Desk", href: "/admin" },
+    { label: "Industries", href: "#industries" },
+    { label: "Resources", href: "#insights" },
     { label: "Contact", href: "#contact" },
+    { label: "Book Consultation", href: "#contact" },
+    { label: "Login", href: "/admin" },
   ],
   heroStats: [
     { value: "10+", label: "Years of experience" },
@@ -21,7 +24,7 @@ export const siteContent = {
       links: [
         { label: "About us", href: "#about" },
         { label: "Services", href: "#services" },
-        { label: "Contact", href: "#contact" },
+        { label: "Customer desk", href: "/admin" },
       ],
     },
     {

@@ -8,11 +8,11 @@ export default function PosterHero() {
       <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-[#c99a45]/15 blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.12fr_0.88fr] lg:px-8">
         <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c99a45]/50 bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-[#155a50] shadow-lg shadow-[#0b3733]/5">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#c99a45]/50 bg-white/70 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[#155a50] shadow-lg shadow-[#0b3733]/5">
             <Sparkles className="h-3.5 w-3.5" />
             Sree Thirumurugan Tax Consultancy
           </div>
-          <h1 className="mt-6 max-w-2xl text-4xl font-semibold leading-[1.04] text-[#0b3733] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.04] text-[#0b3733] sm:text-5xl lg:text-6xl">
             Trusted tax guidance for <span className="text-[#c99a45]">businesses, professionals, and families</span>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4a473d]">
@@ -27,9 +27,10 @@ export default function PosterHero() {
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium text-[#0b3733]">
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">PAN / GST / TDS support</span>
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Audit ready documentation</span>
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Prompt follow-up</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">GST Support</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Income Tax</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Audit Ready</span>
+            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Secure Document Handling</span>
           </div>
         </div>
 

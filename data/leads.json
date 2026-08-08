@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "1786215316068-y91ugt",
+    "customerCode": "STTC-15316068-4360",
+    "createdAt": "2026-08-08T18:55:16.068Z",
+    "companyName": "",
+    "customerType": "individual",
+    "status": "new",
+    "ownershipTransferReady": false,
+    "followUpDate": "",
+    "name": "hchfchfcch",
+    "email": "jgvgvg@gmail.com",
+    "phone": "8756856565",
+    "service": "Income Tax Filing",
+    "notes": "vjgv",
+    "preferredSlot": "09:00 AM",
+    "source": "appointment"
+  },
+  {
+    "id": "1786214943948-lgtnk2",
+    "customerCode": "STTC-14943948-2261",
+    "createdAt": "2026-08-08T18:49:03.948Z",
+    "companyName": "Thirumurugan Foods",
+    "customerType": "business",
+    "status": "new",
+    "ownershipTransferReady": false,
+    "followUpDate": "2026-08-12",
+    "name": "Ravi Kumar",
+    "email": "ravi@example.com",
+    "phone": "9876543210",
+    "service": "GST",
+    "notes": "Need support for quarterly filing and business setup",
+    "preferredSlot": "11:30 AM",
+    "source": "appointment"
+  }
+]
