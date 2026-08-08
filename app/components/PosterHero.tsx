@@ -8,37 +8,37 @@ export default function PosterHero() {
       <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-[#c99a45]/15 blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.12fr_0.88fr] lg:px-8">
         <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c99a45]/50 bg-white/70 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[#155a50] shadow-lg shadow-[#0b3733]/5">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#c99a45]/60 bg-white/75 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[#155a50] shadow-[0_12px_24px_rgba(11,55,51,0.08)] backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5" />
             Sree Thirumurugan Tax Consultancy
           </div>
           <h1 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.04] text-[#0b3733] sm:text-5xl lg:text-6xl">
-            Trusted tax guidance for <span className="text-[#c99a45]">businesses, professionals, and families</span>.
+            Trusted tax guidance for <span className="bg-gradient-to-r from-[#c99a45] to-[#a96f1d] bg-clip-text text-transparent">businesses, professionals, and families</span>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4a473d]">
             From GST filing and income tax planning to audits, registrations, and business advisory, we simplify compliance and protect your growth with clarity and precision.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0b3733] px-6 py-3 text-sm font-semibold text-[#f6f0de] shadow-[0_16px_32px_rgba(11,55,51,0.25)] transition hover:-translate-y-0.5 hover:bg-[#155a50]">
+            <Link href="#contact" className="button-3d inline-flex items-center justify-center gap-2 rounded-full bg-[#0b3733] px-6 py-3 text-sm font-semibold text-[#f6f0de] hover:bg-[#155a50]">
               Book Consultation <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="#services" className="inline-flex items-center justify-center rounded-full border border-[#c99a45] bg-white/60 px-6 py-3 text-sm font-semibold text-[#0b3733] transition hover:-translate-y-0.5 hover:bg-[#efe6cc]">
+            <Link href="#services" className="button-3d inline-flex items-center justify-center rounded-full border border-[#c99a45] bg-white/60 px-6 py-3 text-sm font-semibold text-[#0b3733] hover:bg-[#efe6cc]">
               Explore Services
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium text-[#0b3733]">
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">GST Support</span>
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Income Tax</span>
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Audit Ready</span>
-            <span className="rounded-full border border-[#d8c892] bg-white/70 px-3 py-2 shadow-sm">Secure Document Handling</span>
+            <span className="panel-3d rounded-full px-3 py-2 shadow-sm">GST Support</span>
+            <span className="panel-3d rounded-full px-3 py-2 shadow-sm">Income Tax</span>
+            <span className="panel-3d rounded-full px-3 py-2 shadow-sm">Audit Ready</span>
+            <span className="panel-3d rounded-full px-3 py-2 shadow-sm">Secure Document Handling</span>
           </div>
         </div>
 
         <div className="relative z-10 mt-6 lg:mt-0">
-          <div className="relative rounded-[32px] border border-[#d8c892] bg-[#efe6cc] p-6 shadow-[0_28px_80px_rgba(11,55,51,0.14)] transform-gpu rotate-1">
+          <div className="hero-surface panel-3d floating-3d relative rounded-[32px] bg-[#efe6cc] p-6">
             <div className="absolute -left-4 top-8 h-20 w-20 rounded-full bg-[#c99a45]/25 blur-2xl" />
             <div className="absolute -right-6 bottom-8 h-20 w-20 rounded-full bg-[#0b3733]/15 blur-2xl" />
-            <div className="relative flex items-center justify-between rounded-2xl border border-[#c99a45]/40 bg-[#f6f0de] p-4">
+            <div className="relative flex items-center justify-between rounded-2xl border border-[#c99a45]/40 bg-[#f6f0de] p-4 shadow-[0_12px_24px_rgba(11,55,51,0.06)]">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#155a50]">AuditPro India</p>
                 <p className="mt-1 text-xl font-semibold text-[#0b3733]">Professional & Reliable</p>
@@ -57,8 +57,8 @@ export default function PosterHero() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="rounded-2xl border border-[#d8c892] bg-white/80 p-4 shadow-[0_12px_30px_rgba(11,55,51,0.08)] transition hover:-translate-y-1">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0b3733] text-[#f6f0de]">
+                  <div key={item.label} className="feature-card-3d rounded-2xl border border-[#d8c892] bg-white/80 p-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0b3733] text-[#f6f0de] shadow-[0_12px_20px_rgba(11,55,51,0.2)]">
                       <Icon className="h-5 w-5" />
                     </div>
                     <p className="mt-3 text-sm font-semibold text-[#0b3733]">{item.label}</p>

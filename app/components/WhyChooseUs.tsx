@@ -32,9 +32,9 @@ export default function WhyChooseUs() {
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="rounded-[24px] border border-[#d8c892] bg-white/80 p-6 shadow-[0_16px_35px_rgba(11,55,51,0.04)] backdrop-blur-sm transition hover:-translate-y-1"
+              className="feature-card-3d panel-3d rounded-[24px] p-6"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0b3733] text-lg font-bold text-[#f6f0de]">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0b3733] text-lg font-bold text-[#f6f0de] shadow-[0_12px_20px_rgba(11,55,51,0.2)]">
                 {reason.title.charAt(0)}
               </div>
               <h3 className="text-lg font-semibold text-[#0b3733]">{reason.title}</h3>

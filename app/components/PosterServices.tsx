@@ -25,8 +25,8 @@ export default function PosterServices() {
         </div>
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {items.map((item) => (
-            <div key={item.title} className="rounded-[24px] border border-[#d8c892] bg-[#efe6cc] p-6 shadow-[0_18px_35px_rgba(11,55,51,0.04)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(11,55,51,0.08)]">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0b3733] text-lg font-bold text-[#f6f0de]">
+            <div key={item.title} className="feature-card-3d panel-3d rounded-[24px] p-6">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0b3733] text-lg font-bold text-[#f6f0de] shadow-[0_12px_22px_rgba(11,55,51,0.22)]">
                 {item.title.charAt(0)}
               </div>
               <p className="text-lg font-semibold text-[#0b3733]">{item.title}</p>

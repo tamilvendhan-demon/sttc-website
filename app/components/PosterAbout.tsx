@@ -11,17 +11,17 @@ export default function PosterAbout() {
             We bring years of practical experience in taxation, compliance, and financial operations to help clients stay compliant, reduce stress, and make informed decisions without delays.
           </p>
           <div className="mt-8 space-y-4 text-[#4a473d]">
-            <div className="rounded-[20px] border border-[#d8c892] bg-[#f6f0de] p-4">
+            <div className="panel-3d rounded-[20px] p-4">
               <p className="font-semibold text-[#0b3733]">Our mission</p>
               <p className="mt-2 text-sm leading-7">Simplify compliance and give clients clarity, confidence, and actionable advice.</p>
             </div>
-            <div className="rounded-[20px] border border-[#d8c892] bg-[#f6f0de] p-4">
+            <div className="panel-3d rounded-[20px] p-4">
               <p className="font-semibold text-[#0b3733]">Our values</p>
               <p className="mt-2 text-sm leading-7">Professionalism, accuracy, responsiveness, and long-term client-first guidance.</p>
             </div>
           </div>
         </div>
-        <div className="rounded-[28px] border border-[#d8c892] bg-[#f6f0de] p-8 shadow-[0_18px_45px_rgba(11,55,51,0.04)]">
+        <div className="panel-3d floating-3d rounded-[28px] p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               { value: "10+", label: "Years of practice" },
@@ -29,7 +29,7 @@ export default function PosterAbout() {
               { value: "24/7", label: "Client support" },
               { value: "98%", label: "Timely filing" },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-[#d8c892] bg-white/80 p-4">
+              <div key={item.label} className="feature-card-3d rounded-2xl border border-[#d8c892] bg-white/80 p-4">
                 <p className="text-2xl font-semibold text-[#0b3733]">{item.value}</p>
                 <p className="mt-2 text-sm text-[#4a473d]">{item.label}</p>
               </div>

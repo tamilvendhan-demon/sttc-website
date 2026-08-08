@@ -23,7 +23,7 @@ export default function TestimonialsSection() {
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {testimonials.map((item) => (
-            <div key={item.name} className="rounded-[24px] border border-[#d8c892] bg-[#f6f0de] p-8 shadow-[0_16px_35px_rgba(11,55,51,0.04)]">
+            <div key={item.name} className="feature-card-3d panel-3d rounded-[24px] p-8">
               <div className="mb-4 flex gap-1 text-[#c99a45]">
                 {Array.from({ length: 5 }).map((_, v) => (
                   <span key={v}>★</span>
