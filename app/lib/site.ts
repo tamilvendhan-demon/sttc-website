@@ -7,6 +7,7 @@ export const siteContent = {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
+    { label: "Customer Desk", href: "/admin" },
     { label: "Contact", href: "#contact" },
   ],
   heroStats: [

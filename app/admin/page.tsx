@@ -8,6 +8,8 @@ export default async function AdminPage() {
   const newCount = leads.filter((lead) => (lead.status || "new") === "new").length;
   const qualifiedCount = leads.filter((lead) => (lead.status || "new") === "qualified").length;
   const ownershipReadyCount = leads.filter((lead) => lead.ownershipTransferReady).length;
+  const businessCount = leads.filter((lead) => (lead.customerType || "individual") === "business").length;
+  const individualCount = leads.filter((lead) => (lead.customerType || "individual") === "individual").length;
 
   return (
     <main className="min-h-screen bg-[#f6f0de] px-6 py-16 text-[#0b3733] lg:px-8">
@@ -17,7 +19,7 @@ export default async function AdminPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#c99a45]">Admin Panel</p>
             <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">Client ownership dashboard</h1>
             <p className="mt-3 max-w-2xl text-lg text-[#4a473d]">
-              Every consultation request is recorded with a customer code, ownership status, and follow-up readiness for smooth handover later.
+              All customer details submitted from the website contact and appointment forms are captured here for review, follow-up, and future ownership transfer.
             </p>
           </div>
           <Link href="/" className="rounded-full bg-[#0b3733] px-5 py-3 text-sm font-semibold text-[#f6f0de]">
@@ -25,7 +27,7 @@ export default async function AdminPage() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-5">
           <div className="rounded-[24px] border border-[#d8c892] bg-[#0b3733] p-5 text-[#f6f0de] shadow-lg shadow-[#0b3733]/10">
             <p className="text-sm uppercase tracking-[0.24em] text-[#e7c97c]">Total leads</p>
             <p className="mt-4 text-3xl font-semibold">{leads.length}</p>
@@ -35,7 +37,15 @@ export default async function AdminPage() {
             <p className="mt-4 text-3xl font-semibold text-[#0b3733]">{newCount}</p>
           </div>
           <div className="rounded-[24px] border border-[#d8c892] bg-white p-5 shadow-sm">
-            <p className="text-sm uppercase tracking-[0.24em] text-[#c99a45]">Ready for transfer</p>
+            <p className="text-sm uppercase tracking-[0.24em] text-[#c99a45]">Qualified</p>
+            <p className="mt-4 text-3xl font-semibold text-[#0b3733]">{qualifiedCount}</p>
+          </div>
+          <div className="rounded-[24px] border border-[#d8c892] bg-white p-5 shadow-sm">
+            <p className="text-sm uppercase tracking-[0.24em] text-[#c99a45]">Business</p>
+            <p className="mt-4 text-3xl font-semibold text-[#0b3733]">{businessCount}</p>
+          </div>
+          <div className="rounded-[24px] border border-[#d8c892] bg-white p-5 shadow-sm">
+            <p className="text-sm uppercase tracking-[0.24em] text-[#c99a45]">Ready transfer</p>
             <p className="mt-4 text-3xl font-semibold text-[#0b3733]">{ownershipReadyCount}</p>
           </div>
         </div>
