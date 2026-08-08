@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", notes: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", companyName: "", customerType: "individual", service: "", notes: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -19,12 +19,13 @@ export default function ContactSection() {
         ...form,
         preferredSlot: "",
         source: "contact",
+        status: "new",
       }),
     });
 
     if (response.ok) {
       setSubmitted(true);
-      setForm({ name: "", email: "", phone: "", service: "", notes: "" });
+      setForm({ name: "", email: "", phone: "", companyName: "", customerType: "individual", service: "", notes: "" });
     }
     setLoading(false);
   };
@@ -64,6 +65,13 @@ export default function ContactSection() {
                 <input className="rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Your Email" type="email" required value={form.email} onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))} />
               </div>
               <input className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Phone Number" required value={form.phone} onChange={(event) => setForm((current) => ({ ...current, phone: event.target.value }))} />
+              <div className="grid gap-4 md:grid-cols-2">
+                <input className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Company / Firm" value={form.companyName} onChange={(event) => setForm((current) => ({ ...current, companyName: event.target.value }))} />
+                <select className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" value={form.customerType} onChange={(event) => setForm((current) => ({ ...current, customerType: event.target.value }))}>
+                  <option value="individual">Individual</option>
+                  <option value="business">Business</option>
+                </select>
+              </div>
               <select className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" required value={form.service} onChange={(event) => setForm((current) => ({ ...current, service: event.target.value }))}>
                 <option value="">Select Service</option>
                 <option>Income Tax Filing</option>

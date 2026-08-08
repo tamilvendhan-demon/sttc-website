@@ -19,6 +19,11 @@ export async function POST(request: NextRequest) {
     const notes = typeof payload?.notes === "string" ? payload.notes.trim() : "";
     const preferredSlot = typeof payload?.preferredSlot === "string" ? payload.preferredSlot.trim() : "";
     const source = payload?.source === "appointment" ? "appointment" : "contact";
+    const companyName = typeof payload?.companyName === "string" ? payload.companyName.trim() : "";
+    const customerType = payload?.customerType === "business" ? "business" : "individual";
+    const status = ["new", "follow-up", "qualified", "closed"].includes(payload?.status) ? payload.status : "new";
+    const ownershipTransferReady = Boolean(payload?.ownershipTransferReady);
+    const followUpDate = typeof payload?.followUpDate === "string" ? payload.followUpDate.trim() : "";
 
     if (!name || !email || !phone || !service) {
       return NextResponse.json(
@@ -35,6 +40,11 @@ export async function POST(request: NextRequest) {
       notes,
       preferredSlot,
       source,
+      companyName,
+      customerType,
+      status,
+      ownershipTransferReady,
+      followUpDate,
     });
 
     return NextResponse.json({ success: true, lead }, { status: 201 });

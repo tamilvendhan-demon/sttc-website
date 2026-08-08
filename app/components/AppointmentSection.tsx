@@ -11,6 +11,8 @@ export default function AppointmentSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [customerType, setCustomerType] = useState("individual");
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -35,15 +37,20 @@ export default function AppointmentSection() {
         notes,
         preferredSlot: selectedSlot,
         source: "appointment",
+        companyName,
+        customerType,
+        status: "new",
       }),
     });
 
     const result = await response.json();
     if (response.ok) {
-      setStatus("Consultation request saved. Our team will follow up shortly.");
+      setStatus(`Consultation request saved. Customer code: ${result.lead?.customerCode || "STTC"}. Our team will follow up shortly.`);
       setName("");
       setEmail("");
       setPhone("");
+      setCompanyName("");
+      setCustomerType("individual");
       setNotes("");
     } else {
       setStatus(result.error || "We could not save your request. Please try again.");
@@ -101,6 +108,19 @@ export default function AppointmentSection() {
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Phone</label>
                     <input value={phone} onChange={(event) => setPhone(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="98765 43210" />
+                  </div>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Company / firm</label>
+                    <input value={companyName} onChange={(event) => setCompanyName(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none" placeholder="Optional company name" />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#0b3733]">Customer type</label>
+                    <select value={customerType} onChange={(event) => setCustomerType(event.target.value)} className="w-full rounded-2xl border border-[#d8c892] bg-white px-4 py-3 outline-none">
+                      <option value="individual">Individual</option>
+                      <option value="business">Business</option>
+                    </select>
                   </div>
                 </div>
                 <div>
