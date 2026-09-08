@@ -13,20 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AuditPro India | Tax, GST, Audit & Compliance Consultancy",
-  description: "Premium tax, GST, audit, bookkeeping, and company registration consultancy services for individuals and businesses in India.",
-  keywords: ["tax consultancy", "GST", "income tax", "audit", "company registration", "TDS", "bookkeeping"],
-  metadataBase: new URL("https://tamilvendhan-demon.github.io/sttc-website"),
+  title: "THEDAL | AI Market Linkage for Artisans",
+  description: "AI-powered cataloguing and market discovery for marginalized artisans.",
+  keywords: ["THEDAL", "artisans", "AI catalogue", "market linkage", "Smart India Hackathon"],
+  metadataBase: new URL("https://sttc-website-y9y4-df8kh0adn-tamilvendhan-demons-projects.vercel.app"),
   openGraph: {
-    title: "AuditPro India",
-    description: "Professional tax and compliance consultancy services in India.",
+    title: "THEDAL",
+    description: "AI-powered cataloguing and market discovery for artisans.",
     type: "website",
-    url: "https://tamilvendhan-demon.github.io/sttc-website",
+    url: "https://sttc-website-y9y4-df8kh0adn-tamilvendhan-demons-projects.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AuditPro India",
-    description: "Professional tax and compliance consultancy services in India.",
+    title: "THEDAL",
+    description: "AI-powered cataloguing and market discovery for artisans.",
   },
 };
 
