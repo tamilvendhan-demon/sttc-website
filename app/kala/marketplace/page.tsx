@@ -13,7 +13,7 @@ export default function Marketplace() {
   const [maxPrice, setMaxPrice] = useState("Any price");
 
   useEffect(() => { fetch("/api/products/list").then((response) => response.json()).then((data) => { setProducts(data.products || []); setArtisans(data.artisans || []); }); }, []);
-  const categories = ["All", ...Array.from(new Set(products.map((product) => product.category).filter(Boolean)))];
+  const categories: string[] = ["All", ...Array.from(new Set(products.map((product) => product.category).filter((value): value is string => Boolean(value))))];
   const visibleProducts = useMemo(() => products.filter((product) => {
     const text = `${product.title} ${product.description || ""} ${(product.tags || []).join(" ")}`.toLowerCase();
     const matchesQuery = !query || text.includes(query.toLowerCase());
