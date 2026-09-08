@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { useAuth } from '../../lib/firebase/useAuth';
+import { useAuth } from '../../../lib/firebase/useAuth';
 import Link from 'next/link';
 
 export default function ProductEditor({ initial }: { initial: any }) {

@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     if (projectId && serviceAccount && storageBucket) {
       try {
         // dynamic require
-        const admin = require('firebase-admin');
+        const admin = eval('require')('firebase-admin');
         if (!admin.apps.length) {
           const cred = typeof serviceAccount === 'string' ? JSON.parse(serviceAccount) : serviceAccount;
           admin.initializeApp({ credential: admin.credential.cert(cred), storageBucket });

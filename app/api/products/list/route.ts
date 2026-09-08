@@ -8,7 +8,7 @@ export async function GET() {
     const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT || '';
     if (projectId && serviceAccount) {
       try {
-        const admin = require('firebase-admin');
+        const admin = eval('require')('firebase-admin');
         if (!admin.apps.length) {
           const cred = typeof serviceAccount === 'string' ? JSON.parse(serviceAccount) : serviceAccount;
           admin.initializeApp({ credential: admin.credential.cert(cred), projectId });

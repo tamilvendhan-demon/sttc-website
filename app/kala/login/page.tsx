@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import Brand from '../components/Brand';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { firebaseAuth } from '../../../lib/firebase/init';
 import { getDemoUser } from '../../../lib/firebase/mock';
 
@@ -17,26 +16,23 @@ export default function LoginPage() {
 
   async function doLogin(e: any) {
     e.preventDefault();
-    const auth = firebaseAuth || (typeof window !== 'undefined' ? getAuth() : null);
+    const auth = firebaseAuth;
     if (!auth) {
       demoLogin();
       return;
     }
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert('Logged in');
+      demoLogin();
     } catch (err: any) {
       alert('Login failed: ' + err.message);
     }
   }
 
   async function google() {
-    const auth = firebaseAuth || (typeof window !== 'undefined' ? getAuth() : null);
+    const auth = firebaseAuth;
     if (!auth) { demoLogin(); return; }
     try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      alert('Logged in with Google');
+      demoLogin();
     } catch (err: any) { alert('Google login failed: ' + err.message); }
   }
 

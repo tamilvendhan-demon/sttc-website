@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       try {
         // dynamic import to avoid hard dependency when not configured
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const admin = require('firebase-admin');
+        const admin = eval('require')('firebase-admin');
         if (!admin.apps.length) {
           const cred = typeof serviceAccount === 'string' ? JSON.parse(serviceAccount) : serviceAccount;
           admin.initializeApp({ credential: admin.credential.cert(cred), projectId });
