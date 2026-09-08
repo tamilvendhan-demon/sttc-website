@@ -3,7 +3,6 @@ import aiClient from '../../../../lib/ai/client';
 
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json();
     const body = await req.json();
     const messageText = body.message;
     const stream = body.stream || false;
@@ -25,7 +24,9 @@ export async function POST(req: Request) {
     }
 
     const r = await aiClient.chat(messageText as string);
-    return NextResponse.json({ reply: r.reply, raw: r.raw });
+  const response: { reply: string; raw?: unknown } = { reply: r.reply };
+  if ('raw' in r) response.raw = r.raw;
+  return NextResponse.json(response);
   } catch (e: any) {
     return NextResponse.json({ reply: 'Thedal encountered an error.', error: String(e) }, { status: 500 });
   }
