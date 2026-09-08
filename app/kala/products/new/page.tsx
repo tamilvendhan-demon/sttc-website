@@ -79,7 +79,7 @@ export default function NewProductPage() {
       data.imageUrl = imageUrl;
       setAiResult(data);
     } catch (e) {
-      setError(e?.message || String(e));
+      setError(e instanceof Error ? e.message : String(e));
       setAiResult({ error: 'AI error' });
     } finally {
       setLoading(false);
