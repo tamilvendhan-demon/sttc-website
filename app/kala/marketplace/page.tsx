@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
-type Product = { id: string; title: string; description?: string; shortDescription?: string; category?: string; material?: string; price?: number; tags?: string[]; location?: string; artisanId?: string; status?: string };
+type Product = { id: string; title: string; description?: string; shortDescription?: string; category?: string; material?: string; price?: number; tags?: string[]; location?: string; artisanId?: string; imageUrl?: string; status?: string };
 
 export default function Marketplace() {
   const [products, setProducts] = useState<Product[]>([]);
