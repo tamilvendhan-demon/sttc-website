@@ -3,36 +3,21 @@ import Link from "next/link";
 
 export default function KalaLanding() {
   return (
-    <main className="min-h-screen p-8 bg-gradient-to-b from-[#f6f0de] to-white">
-      <header className="max-w-4xl mx-auto flex items-center justify-between mb-12">
-        <Brand size={56} />
-        <nav className="flex gap-4">
-          <Link href="/kala/thedal" className="px-4 py-2 bg-[#155a50] text-white rounded">Try Thedal</Link>
-          <Link href="/kala/marketplace" className="px-4 py-2 border border-[#d8c892] rounded">Explore Marketplace</Link>
-        </nav>
-      </header>
-
-      <section className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl font-bold mb-4">Turn Your Craft Into Opportunity</h1>
-        <p className="text-lg text-gray-700 mb-8">AI-powered cataloguing and market discovery designed to help artisans reach the right buyers.</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="panel-3d p-6 rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">How it works</h3>
-            <ol className="list-decimal list-inside text-left space-y-2">
-              <li>Upload a photo or speak your product details.</li>
-              <li>Thedal analyses and generates a smart catalogue.</li>
-              <li>Discover market matches and reach buyers.</li>
-            </ol>
-          </div>
-
-          <div className="panel-3d p-6 rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Try the Demo</h3>
-            <p className="text-sm text-gray-700 mb-4">Use Demo Mode to run a full SIH presentation flow without an OpenAI key.</p>
-            <Link href="/kala/thedal" className="inline-block px-5 py-3 rounded bg-[#c99a45] text-white">Try AI Demo</Link>
-          </div>
+    <main className="min-h-screen overflow-hidden bg-[#f6f0de]">
+      <section className="mx-auto max-w-6xl px-5 pb-20 pt-10 lg:px-8 lg:pt-16">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <div><div className="flex items-center gap-3"><Brand size={54} /><span className="rounded-full bg-[#e7c97c]/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#8a5b12]">SIH26090 · Prototype</span></div><p className="mt-16 text-xs font-semibold uppercase tracking-[0.3em] text-[#c99a45]">Digital intelligence for handmade India</p><h1 className="mt-5 max-w-2xl text-5xl font-semibold leading-[1.02] tracking-tight text-[#0b3733] md:text-7xl">Turn your craft into opportunity.</h1><p className="mt-6 max-w-xl text-lg leading-8 text-[#5f5a50]">Artisans already have the skill and the story. THEDAL gives them the catalogue, market insight, and buyer access to be seen by the right people.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="/kala/products/new" className="rounded-full bg-[#155a50] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#155a50]/20">Start as an artisan →</Link><Link href="/kala/marketplace" className="rounded-full border border-[#c9b879] bg-white/60 px-6 py-3.5 text-sm font-semibold text-[#155a50]">Explore products</Link></div><p className="mt-5 text-sm text-[#8b8069]">Demo mode works without an OpenAI key · Every AI field stays editable</p></div>
+          <div className="relative"><div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border-[24px] border-[#c99a45]/20" /><div className="relative rounded-[32px] bg-[#0b3733] p-5 text-[#f6f0de] shadow-[0_30px_80px_rgba(11,55,51,0.25)]"><div className="flex items-center justify-between border-b border-white/15 pb-4"><div><p className="text-xs uppercase tracking-[0.2em] text-[#e7c97c]">Thedal intelligence</p><p className="mt-1 font-semibold">One product. Many possibilities.</p></div><span className="rounded-full bg-[#c99a45] px-3 py-1 text-xs font-semibold">AI ready</span></div><div className="mt-6 rounded-2xl bg-[#f6f0de] p-4 text-[#0b3733]"><div className="flex items-center gap-4"><div className="flex h-20 w-20 items-center justify-center rounded-xl bg-[#eadfc3] text-4xl text-[#c99a45]">✦</div><div><p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8a5b12]">AI identified</p><h2 className="mt-1 text-xl font-semibold">Handwoven bamboo basket</h2><p className="mt-1 text-sm text-[#706a5e]">Home décor · Bamboo · 92% confidence</p></div></div><div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs"><div className="rounded-lg bg-white p-3"><strong className="block text-lg text-[#155a50]">₹899</strong>price insight</div><div className="rounded-lg bg-white p-3"><strong className="block text-lg text-[#155a50]">94%</strong>market fit</div><div className="rounded-lg bg-white p-3"><strong className="block text-lg text-[#155a50]">18</strong>buyer leads</div></div></div><div className="mt-5 grid grid-cols-4 gap-2 text-center text-[11px] text-[#dce9dc]"><div><span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#e7c97c]">01</span><p className="mt-2">Photo</p></div><div><span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#e7c97c]">02</span><p className="mt-2">Catalogue</p></div><div><span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#e7c97c]">03</span><p className="mt-2">Market</p></div><div><span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#e7c97c]">04</span><p className="mt-2">Buyer</p></div></div></div></div>
         </div>
       </section>
+
+      <section className="border-y border-[#e6dcc1] bg-[#fffaf0]"><div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 lg:grid-cols-3 lg:px-8"><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c99a45]">The gap</p><h2 className="mt-3 text-3xl font-semibold text-[#0b3733]">Good products remain invisible.</h2></div><p className="leading-8 text-[#5f5a50]">A rural artisan may know exactly how to make a beautiful product, but not how to photograph it, describe it, price it, or find a store that wants to buy it.</p><p className="leading-8 text-[#5f5a50]">THEDAL is not another generic marketplace. It is the digital business assistant that makes an artisan market-ready before discovery begins.</p></div></section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 lg:px-8"><div className="flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c99a45]">One guided journey</p><h2 className="mt-3 text-3xl font-semibold text-[#0b3733] md:text-4xl">From craft to market in four steps.</h2></div><Link href="/kala/dashboard" className="text-sm font-semibold text-[#155a50]">Open artisan dashboard →</Link></div><div className="mt-9 grid gap-4 md:grid-cols-4">{[["01","Upload your craft","Photo, voice, or a simple description."],["02","AI builds the catalogue","Titles, tags, story, price, and confidence."],["03","Discover markets","See buyer segments and recommended actions."],["04","Connect with buyers","Publish, search, and receive interest." ]].map(([number,title,detail]) => <div key={number} className="panel-3d rounded-2xl p-5"><span className="text-sm font-semibold text-[#c99a45]">{number}</span><h3 className="mt-8 text-xl font-semibold text-[#0b3733]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#706a5e]">{detail}</p></div>)}</div></section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 lg:px-8"><div className="rounded-[28px] bg-[#155a50] p-8 text-[#f6f0de] md:p-12"><div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#e7c97c]">Built for trust</p><h2 className="mt-3 text-3xl font-semibold md:text-4xl">AI assists. Artisans decide. People verify.</h2></div><div className="grid gap-4 sm:grid-cols-3"><div><p className="font-semibold">Editable by design</p><p className="mt-2 text-sm leading-6 text-[#dce9dc]">Every generated field can be reviewed before publishing.</p></div><div><p className="font-semibold">Human verification</p><p className="mt-2 text-sm leading-6 text-[#dce9dc]">AI is never treated as proof of authenticity.</p></div><div><p className="font-semibold">Privacy first</p><p className="mt-2 text-sm leading-6 text-[#dce9dc]">Buyers can discover without exposing private identity.</p></div></div></div></div></section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 text-center lg:px-8"><h2 className="text-3xl font-semibold text-[#0b3733]">See the complete three-minute demo.</h2><p className="mx-auto mt-3 max-w-xl leading-7 text-[#706a5e]">Start with a sample basket, watch AI create the listing, then switch to the buyer view and find where it fits.</p><Link href="/kala/thedal" className="mt-7 inline-block rounded-full bg-[#c99a45] px-7 py-3.5 text-sm font-semibold text-white">Try THEDAL AI demo →</Link></section>
     </main>
   );
 }

@@ -25,7 +25,7 @@ export default function NewProductPage() {
     setLoading(true);
     try {
       setError(null);
-      const res = await fetch('/api/ai/catalogue', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ inputType: 'text', description: descriptionText }) });
+      const res = await fetch('/api/ai/catalogue', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ inputType: 'text', text: descriptionText }) });
       const data = await res.json();
       setAiResult(data);
     } catch (e:any) {

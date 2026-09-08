@@ -10,6 +10,7 @@ export default function LoginPage() {
 
   async function demoLogin() {
     const u = getDemoUser();
+    window.localStorage.setItem('thedal-demo-user', JSON.stringify({ uid: u.uid, email: u.email, displayName: u.displayName }));
     alert('Logged in as demo user: ' + u.displayName);
     // In future: set app state / cookie
   }

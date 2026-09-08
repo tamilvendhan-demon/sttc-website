@@ -4,9 +4,10 @@ import aiClient from '../../../../lib/ai/client';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { inputType, text, imageUrl } = body || {};
+    const { inputType, text, description, imageUrl } = body || {};
+    const productText = text || description || '';
     if (aiClient.isMock()) {
-      const demo = await aiClient.generateCatalogueFromText(text || '');
+      const demo = await aiClient.generateCatalogueFromText(productText);
       return NextResponse.json(demo);
     }
 
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
       return NextResponse.json(result);
     }
 
-    const result = await aiClient.generateCatalogueFromText(text || '');
+    const result = await aiClient.generateCatalogueFromText(productText);
     return NextResponse.json(result);
   } catch (e: any) {
     return NextResponse.json({ error: 'AI failed', detail: String(e) }, { status: 500 });
