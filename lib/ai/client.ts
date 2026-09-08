@@ -136,4 +136,4 @@ export async function generateCatalogueFromImage(imageUrl: string) {
   }
 }
 
-export default { isMock, chat, generateCatalogueFromText, generateCatalogueFromImage };
+export default { isMock, chat, generateCatalogueFromText, generateCatalogueFromImage, streamOpenAIChat };

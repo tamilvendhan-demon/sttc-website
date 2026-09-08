@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import aiClient from '../../../../lib/ai/client';
+import { streamOpenAIChat } from '../../../../lib/ai/client';
 
 export async function GET() {
   try {
     const messages = [{ role: 'user', content: 'Give a short catalogue JSON for a handwoven jute bag.' }];
-    const r = await aiClient.streamOpenAIChat(messages as any);
+    const r = await streamOpenAIChat(messages);
     if (r.mock && r.stream) {
       return new NextResponse(r.stream, { headers: { 'Content-Type': 'text/event-stream' } });
     }
