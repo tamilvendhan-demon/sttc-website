@@ -1,0 +1,78 @@
+{
+  "artisans": [
+    {
+      "id": "artisan-1",
+      "name": "Lakshmi Crafts",
+      "location": "Tamil Nadu",
+      "craftSpecialization": "Bamboo weaving",
+      "verificationStatus": "Verified",
+      "profileImage": "",
+      "yearsOfExperience": 12
+    },
+    {
+      "id": "artisan-2",
+      "name": "Ravi Bamboo Works",
+      "location": "Kerala",
+      "craftSpecialization": "Bamboo lighting",
+      "verificationStatus": "Verified",
+      "profileImage": "",
+      "yearsOfExperience": 8
+    },
+    {
+      "id": "artisan-3",
+      "name": "Meena Handloom Studio",
+      "location": "Tamil Nadu",
+      "craftSpecialization": "Handwoven textiles",
+      "verificationStatus": "Pending Verification",
+      "profileImage": "",
+      "yearsOfExperience": 6
+    }
+  ],
+  "products": [
+    {
+      "id": "product-1",
+      "artisanId": "artisan-1",
+      "title": "Handcrafted Bamboo Storage Basket",
+      "description": "A traditional handwoven bamboo basket crafted using sustainable natural materials.",
+      "category": "Home Décor",
+      "material": "Bamboo",
+      "craftType": "Handwoven",
+      "price": 899,
+      "images": [],
+      "tags": ["bamboo","handmade","eco-friendly","storage"],
+      "aiConfidence": 0.92,
+      "status": "Published",
+      "location": "Tamil Nadu"
+    },
+    {
+      "id": "product-2",
+      "artisanId": "artisan-2",
+      "title": "Terracotta Table Lamp",
+      "description": "Handmade terracotta lamp with traditional motifs.",
+      "category": "Lighting",
+      "material": "Terracotta",
+      "craftType": "Pottery",
+      "price": 1299,
+      "images": [],
+      "tags": ["terracotta","lamp","handmade","home-decor"],
+      "aiConfidence": 0.88,
+      "status": "Published",
+      "location": "Kerala"
+    },
+    {
+      "id": "product-3",
+      "artisanId": "artisan-3",
+      "title": "Handwoven Cotton Bag",
+      "description": "Eco-friendly handwoven cotton bag suitable for daily use.",
+      "category": "Accessories",
+      "material": "Cotton",
+      "craftType": "Handloom",
+      "price": 499,
+      "images": [],
+      "tags": ["handloom","cotton","handmade","eco-friendly"],
+      "aiConfidence": 0.9,
+      "status": "Published",
+      "location": "Tamil Nadu"
+    }
+  ]
+}
