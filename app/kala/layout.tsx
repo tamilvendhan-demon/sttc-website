@@ -1,4 +1,4 @@
-import './globals.css';
+import '../globals.css';
 import Brand from './components/Brand';
 import Link from 'next/link';
 
