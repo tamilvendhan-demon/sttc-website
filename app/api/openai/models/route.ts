@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ error: { message: "OPENAI_API_KEY is not configured on the server." } }, { status: 500 });
-  }
-  return NextResponse.json({ data: [{ id: "gpt-4o" }] });
+  return NextResponse.json({
+    data: [
+      { id: "thedal-local", owned_by: "thedal-ai" },
+      ...(process.env.OPENAI_API_KEY ? [{ id: process.env.THEDAL_MODEL || "gpt-4o", owned_by: "provider" }] : []),
+    ],
+  });
 }
