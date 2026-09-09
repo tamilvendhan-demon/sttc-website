@@ -1,10 +1,13 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thedal AI — Thedal</title></head><body><script>
 (async()=>{try{const p=[0,1,2,3,4,5];const s=(await Promise.all(p.map(i=>fetch('/thedal-source/'+i+'.txt').then(r=>{if(!r.ok)throw Error('chunk '+i+' failed');return r.text()})))).join('');const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));const ds=new DecompressionStream('gzip');const out=await new Response(new Blob([b]).stream().pipeThrough(ds)).arrayBuffer();let html=new TextDecoder().decode(out);
 html=html.replaceAll('KALA LINK AI','Thedal AI');
+html=html.replaceAll('KALA LINK Assistant','Thedal AI');
 html=html.replaceAll('https://api.openai.com/v1/chat/completions','/api/openai/chat');
 html=html.replaceAll('https://api.openai.com/v1/models','/api/openai/models');
 html=html.replaceAll('openaiApiKey:null','openaiApiKey:\'server\'');
 html=html.replace("if(!state.openaiApiKey){ openApiKeyModal(); return false; }","if(false){ openApiKeyModal(); return false; }");
 html=html.replace("if(!state.openaiApiKey) throw new Error('Connect your OpenAI API key first.');","if(false) throw new Error('Connect your OpenAI API key first.');");
+html=html.replace("function toggleAssistant(){   if(!state.openaiApiKey){ openApiKeyModal(); return; }   document.getElementById('assistantPanel').classList.toggle('open');","function toggleAssistant(){ document.getElementById('assistantPanel').classList.toggle('open');");
+html=html.replace('ChatGPT request failed','Thedal AI request failed').replace('ChatGPT request','Thedal AI request').replace('reach ChatGPT','reach Thedal AI').replace('powered by gpt-4o','powered by Thedal AI');
 document.open();document.write(html);document.close()}catch(e){document.body.innerHTML='<pre style="font:16px system-ui;padding:24px">Thedal failed to load: '+String(e)+'</pre>'}})();
 </script></body></html>
