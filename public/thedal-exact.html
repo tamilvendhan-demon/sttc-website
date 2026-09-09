@@ -1,5 +1,6 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KALA LINK AI — Thedal</title></head><body><script>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thedal AI — Thedal</title></head><body><script>
 (async()=>{try{const p=[0,1,2,3,4,5];const s=(await Promise.all(p.map(i=>fetch('/thedal-source/'+i+'.txt').then(r=>{if(!r.ok)throw Error('chunk '+i+' failed');return r.text()})))).join('');const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));const ds=new DecompressionStream('gzip');const out=await new Response(new Blob([b]).stream().pipeThrough(ds)).arrayBuffer();let html=new TextDecoder().decode(out);
+html=html.replaceAll('KALA LINK AI','Thedal AI');
 html=html.replaceAll('https://api.openai.com/v1/chat/completions','/api/openai/chat');
 html=html.replaceAll('https://api.openai.com/v1/models','/api/openai/models');
 html=html.replaceAll('openaiApiKey:null','openaiApiKey:\'server\'');
