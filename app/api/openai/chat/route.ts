@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const THEdal_SYSTEM_PROMPT = `You are Thedal AI, the intelligent digital business assistant inside KALA LINK AI for marginalized artisans.
+const THEdal_SYSTEM_PROMPT = `You are Thedal AI, the intelligent digital business assistant inside Thedal AI for marginalized artisans.
 
 Your personality and interaction style should feel like a modern ChatGPT-quality assistant: natural, helpful, accurate, context-aware, concise when the question is simple and detailed when the task needs it. Never claim to be ChatGPT or OpenAI; you are Thedal AI.
 
@@ -31,8 +31,8 @@ export async function POST(request: Request) {
   const key = process.env.OPENAI_API_KEY;
   if (!key) {
     return NextResponse.json(
-      { error: { message: "OPENAI_API_KEY is not configured on the server." } },
-      { status: 500 },
+      { error: { message: "Thedal AI server is not connected to its AI provider yet. Add OPENAI_API_KEY in Vercel Environment Variables and redeploy." } },
+      { status: 503 },
     );
   }
 
@@ -44,9 +44,11 @@ export async function POST(request: Request) {
       ...incomingMessages.filter((message: { role?: string }) => message?.role !== "system"),
     ];
 
-    const model = process.env.THEDAL_MODEL || "gpt-5.6-sol";
+    // Use a model that is also exposed by the existing Thedal model endpoint.
+    // It can be overridden safely with THEDAL_MODEL in Vercel.
+    const model = process.env.THEDAL_MODEL || "gpt-4o";
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,8 +56,9 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         model,
-        input: messages,
-        max_output_tokens: body.max_tokens || 4096,
+        messages,
+        temperature: typeof body.temperature === "number" ? body.temperature : 0.7,
+        max_tokens: body.max_tokens || 4096,
       }),
       cache: "no-store",
     });
@@ -66,30 +69,7 @@ export async function POST(request: Request) {
       return NextResponse.json(data, { status: response.status });
     }
 
-    const outputText =
-      typeof data.output_text === "string"
-        ? data.output_text
-        : Array.isArray(data.output)
-          ? data.output
-              .flatMap((item: { content?: Array<{ text?: string }> }) => item?.content || [])
-              .map((item: { text?: string }) => item?.text || "")
-              .join("")
-          : "";
-
-    // Keep the response shape expected by the existing exact HTML interface.
-    return NextResponse.json({
-      id: data.id,
-      object: "chat.completion",
-      model: data.model || model,
-      choices: [
-        {
-          index: 0,
-          message: { role: "assistant", content: outputText },
-          finish_reason: "stop",
-        },
-      ],
-      usage: data.usage,
-    });
+    return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
       { error: { message: error instanceof Error ? error.message : "AI request failed." } },
