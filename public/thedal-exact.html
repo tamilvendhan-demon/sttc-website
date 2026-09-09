@@ -1,55 +1,10 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thedal AI — Thedal</title></head><body><script>
 (async()=>{try{const p=[0,1,2,3,4,5];const s=(await Promise.all(p.map(i=>fetch('/thedal-source/'+i+'.txt').then(r=>{if(!r.ok)throw Error('chunk '+i+' failed');return r.text()})))).join('');const b=Uint8Array.from(atob(s),c=>c.charCodeAt(0));const ds=new DecompressionStream('gzip');const out=await new Response(new Blob([b]).stream().pipeThrough(ds)).arrayBuffer();let html=new TextDecoder().decode(out);
 html=html.replaceAll('KALA LINK AI','Thedal AI');
-html=html.replaceAll('KALA LINK Assistant','Thedal AI');
 html=html.replaceAll('https://api.openai.com/v1/chat/completions','/api/openai/chat');
 html=html.replaceAll('https://api.openai.com/v1/models','/api/openai/models');
 html=html.replaceAll('openaiApiKey:null','openaiApiKey:\'server\'');
 html=html.replace("if(!state.openaiApiKey){ openApiKeyModal(); return false; }","if(false){ openApiKeyModal(); return false; }");
 html=html.replace("if(!state.openaiApiKey) throw new Error('Connect your OpenAI API key first.');","if(false) throw new Error('Connect your OpenAI API key first.');");
-html=html.replace("function toggleAssistant(){   if(!state.openaiApiKey){ openApiKeyModal(); return; }   document.getElementById('assistantPanel').classList.toggle('open');","function toggleAssistant(){ document.getElementById('assistantPanel').classList.toggle('open');");
-html=html.replace('ChatGPT request failed','Thedal AI request failed').replace('ChatGPT request','Thedal AI request').replace('reach ChatGPT','reach Thedal AI').replace('powered by gpt-4o','powered by Thedal AI');
-html=html.replace('onclick="openApiKeyModal()">Check API Key','onclick="showToast(\'Thedal AI runs locally in your browser — no API key needed.\')">Thedal AI Status');
-html=html.replace('>🟢 ChatGPT Connected<','>✦ Thedal AI Online<');
-
-const aiScript=`<script>
-(()=>{
-  const MODEL='Qwen2.5-0.5B-Instruct-q4f16_1-MLC';
-  let engine=null, loading=null;
-  const setStatus=(text)=>{const b=document.getElementById('connectBtn');if(b)b.textContent=text;};
-  const warm=async()=>{
-    if(engine)return engine;
-    if(loading)return loading;
-    if(!('gpu' in navigator))throw new Error('WebGPU is not available. Use a recent Chrome or Edge browser.');
-    loading=(async()=>{
-      setStatus('⏳ Thedal AI loading…');
-      const w=await import('https://esm.run/@mlc-ai/web-llm@0.2.82');
-      engine=await w.CreateMLCEngine(MODEL,{initProgressCallback:(p)=>{const m=String(p?.text||'').match(/(\\d+)%/);setStatus(m?`⏳ Thedal AI ${m[1]}%`:'⏳ Thedal AI loading…');}});
-      setStatus('✦ Thedal AI Online');
-      return engine;
-    })().catch(e=>{loading=null;setStatus('✦ Thedal AI');throw e;});
-    return loading;
-  };
-  window.thedalBrowserAI={warm,generate:async(user,system,opts={})=>{
-    const e=await warm();
-    const content=Array.isArray(user)?user.map(x=>`${x.role||'user'}: ${x.content||''}`).join('\\n'):String(user||'');
-    const r=await e.chat.completions.create({messages:[{role:'system',content:String(system||'You are Thedal AI, a helpful assistant.')},{role:'user',content}],temperature:typeof opts.temperature==='number'?opts.temperature:0.7,max_tokens:opts.maxTokens||1200,stream:false,extra_body:{enable_thinking:false}});
-    return r?.choices?.[0]?.message?.content||'';
-  }};
-  window.requireApiKey=()=>true;
-  window.openApiKeyModal=()=>showToast('Thedal AI does not require an API key.');
-  window.toggleAssistant=()=>{const p=document.getElementById('assistantPanel');if(p){p.classList.toggle('open');if(p.classList.contains('open'))warm().catch(()=>{});}};
-  window.callOpenAI=async(user,system,opts={})=>{
-    try{return await window.thedalBrowserAI.generate(user,system,opts);}
-    catch(e){
-      const res=await fetch('/api/openai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'thedal-local',messages:[{role:'system',content:String(system||'')},{role:'user',content:Array.isArray(user)?user.map(x=>`${x.role||'user'}: ${x.content||''}`).join('\\n'):String(user||'')}],max_tokens:opts.maxTokens||1200})});
-      if(!res.ok)throw e;
-      const d=await res.json();return d.choices?.[0]?.message?.content||'';
-    }
-  };
-  setTimeout(()=>warm().catch(()=>{}),300);
-})();
-</script>`;
-html=html.replace('</body>',aiScript+'</body>');
 document.open();document.write(html);document.close()}catch(e){document.body.innerHTML='<pre style="font:16px system-ui;padding:24px">Thedal failed to load: '+String(e)+'</pre>'}})();
 </script></body></html>
