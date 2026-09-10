@@ -6,5 +6,7 @@ html=html.replaceAll('https://api.openai.com/v1/models','/api/openai/models');
 html=html.replaceAll('openaiApiKey:null','openaiApiKey:\'server\'');
 html=html.replace("if(!state.openaiApiKey){ openApiKeyModal(); return false; }","if(false){ openApiKeyModal(); return false; }");
 html=html.replace("if(!state.openaiApiKey) throw new Error('Connect your OpenAI API key first.');","if(false) throw new Error('Connect your OpenAI API key first.');");
-document.open();document.write(html);document.close()}catch(e){document.body.innerHTML='<pre style="font:16px system-ui;padding:24px">Thedal failed to load: '+String(e)+'</pre>'}})();
+document.open();document.write(html);document.close();
+setTimeout(function(){var sc=document.createElement('script');sc.src='/thedal-ai.js';sc.async=true;sc.onerror=function(){console.warn('Thedal AI engine could not load; server assistant remains available.');};document.body.appendChild(sc);},0);
+}catch(e){document.body.innerHTML='<pre style="font:16px system-ui;padding:24px">Thedal failed to load: '+String(e)+'</pre>'}})();
 </script></body></html>
