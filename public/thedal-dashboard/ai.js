@@ -1,1 +1,1 @@
-(()=>{const s=document.createElement('script');s.src='/thedal-dashboard/enhance.js';s.async=true;s.onerror=()=>console.warn('Thedal feature engine failed to load.');document.body.appendChild(s)})();
+(()=>{const s=document.createElement('script');s.src='/thedal-dashboard/enhance.js?v=20260910-2';s.async=false;s.onload=()=>console.log('Thedal feature engine loaded');s.onerror=()=>console.error('Thedal feature engine failed to load');document.body.appendChild(s)})();
