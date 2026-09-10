@@ -1,1 +1,34 @@
-__CONTENT__
+(function(){
+'use strict';
+let enginePromise=null;
+const MODEL='Qwen3-0.6B-q4f16_1-MLC';
+const DEMO_IMAGES={
+ basket:'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=82',
+ lamp:'https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=900&q=82',
+ pottery:'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=900&q=82',
+ textile:'https://images.unsplash.com/photo-1604321005318-7f4e8f4a4b7c?auto=format&fit=crop&w=900&q=82'
+};
+const DEMO_PRODUCTS={1:DEMO_IMAGES.basket,2:DEMO_IMAGES.lamp,3:DEMO_IMAGES.pottery,4:DEMO_IMAGES.textile,5:DEMO_IMAGES.pottery,6:DEMO_IMAGES.basket};
+function status(t){const e=document.getElementById('connectBtn');if(e)e.textContent=t;}
+async function engine(){
+ if(!navigator.gpu)throw Error('WebGPU unavailable');
+ if(!enginePromise){enginePromise=(async()=>{status('🟡 Thinking…');const w=await import('https://esm.run/@mlc-ai/web-llm@0.2.84');const e=await w.CreateMLCEngine(MODEL,{initProgressCallback:p=>status('🟡 Thedal '+Math.round((p.progress||0)*100)+'%')});status('🟢 Thedal AI');return e;})().catch(e=>{enginePromise=null;status('⚪ Thedal AI');throw e;});}
+ return enginePromise;
+}
+function messages(c,s){const a=[{role:'system',content:s||'You are Thedal AI, a capable general-purpose assistant. Think carefully before answering. Support English, Tamil, Tanglish and Hindi. Never invent facts.'}];if(Array.isArray(c))c.forEach(m=>{if(m&&m.role&&typeof m.content==='string')a.push({role:m.role,content:m.content});});else a.push({role:'user',content:String(c||'')});return a;}
+async function local(c,s,o){const e=await engine();const r=await e.chat.completions.create({messages:messages(c,s),temperature:o.temperature??.65,max_tokens:o.maxTokens||1200});return r?.choices?.[0]?.message?.content||'';}
+async function server(c,s,o){const m=[];if(s)m.push({role:'system',content:s});if(Array.isArray(c))c.forEach(x=>{if(x?.role)m.push(x);});else m.push({role:'user',content:String(c||'')});const r=await fetch('/api/openai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:m,max_tokens:o.maxTokens||4096,temperature:o.temperature??.65})});const d=await r.json();if(!r.ok)throw Error(d.detail||d.error||'AI request failed');return d?.choices?.[0]?.message?.content||'';}
+window.requireApiKey=()=>true;
+window.openApiKeyModal=()=>{document.getElementById('assistantPanel')?.classList.add('open');};
+window.callOpenAI=async(c,s,o){o=o||{};const image=Array.isArray(c)&&c.some(m=>Array.isArray(m?.content)&&m.content.some(p=>p?.type==='image_url'));if(image)return server(c,s,o);try{return await local(c,s,o);}catch(e){return server(c,s,o);}};
+function esc(s){return typeof escHtml==='function'?escHtml(s):String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));}
+function thinking(id){return `<div class="asst-typing" id="${id}"><span class="tdot">●</span> Thedal is thinking<span class="tpulse">…</span></div>`;}
+function rich(s){return esc(s).replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');}
+window.sendAssistantMsg=async function(){const i=document.getElementById('assistantInput'),b=document.getElementById('assistantBody');if(!i||!b)return;const t=i.value.trim();if(!t)return;b.insertAdjacentHTML('beforeend',`<div class="asst-msg asst-user">${esc(t)}</div>`);i.value='';const id='td-'+Date.now();b.insertAdjacentHTML('beforeend',thinking(id));b.scrollTop=b.scrollHeight;try{state.assistantHistory.push({role:'user',content:t});const raw=await callOpenAI(state.assistantHistory.slice(-10),`You are Thedal AI, the intelligent assistant for an artisan marketplace. Be a genuinely useful general AI, not a scripted FAQ. Support Tamil, Tanglish, Hindi and English. Help with product catalogues, image/product understanding when available, pricing, market linkage, buyer targeting, writing, calculations, study and general questions. Think carefully before answering.`,{maxTokens:1000});document.getElementById(id)?.remove();b.insertAdjacentHTML('beforeend',`<div class="asst-msg asst-bot">${rich(raw)}</div>`);state.assistantHistory.push({role:'assistant',content:raw});}catch(e){document.getElementById(id)?.remove();b.insertAdjacentHTML('beforeend',`<div class="asst-msg asst-bot">${esc(e.message||'Thedal could not respond right now.')}</div>`);}b.scrollTop=b.scrollHeight;};
+window.toggleAssistant=function(){document.getElementById('assistantPanel')?.classList.toggle('open');document.getElementById('assistantInput')?.focus();};
+function voice(){const S=window.SpeechRecognition||window.webkitSpeechRecognition;if(!S){alert('Voice input needs Chrome or Edge.');return;}const i=document.getElementById('assistantInput'),btn=document.getElementById('thedalVoiceBtn'),r=new S();r.lang='ta-IN';r.interimResults=true;r.continuous=false;if(btn)btn.textContent='⏺';r.onresult=e=>{i.value=Array.from(e.results).map(x=>x[0].transcript).join('');};r.onend=()=>{if(btn)btn.textContent='🎙';};r.onerror=()=>{if(btn)btn.textContent='🎙';};r.start();}
+function installVoice(){const i=document.getElementById('assistantInput');if(!i||document.getElementById('thedalVoiceBtn'))return;const b=document.createElement('button');b.id='thedalVoiceBtn';b.type='button';b.className='btn btn-ghost btn-sm';b.textContent='🎙';b.title='Voice input';b.onclick=voice;i.parentElement?.insertBefore(b,i);}
+function installMarketplace(){const g=document.getElementById('marketplaceGrid');if(!g)return;window.renderMarketplace=function(list){g.innerHTML=list.map(p=>`<div class="product-card" onclick="openProduct(${p.id})"><div class="pimg td-photo"><img src="${DEMO_PRODUCTS[p.id]||DEMO_IMAGES.pottery}" alt="${esc(p.name)}"><span class="td-ai">✦ AI Match ${p.match}%</span></div><div class="pbody"><h4>${esc(p.name)}</h4><div class="pmeta">By ${esc(p.artisan)} · ${esc(p.location)}</div><div class="pfoot"><span class="price">₹${Number(p.price).toLocaleString('en-IN')}</span>${p.verified?'<span class="verified-tag">✓ Verified</span>':'<span class="pmeta">Unverified</span>'}</div></div></div>`).join('');};window.renderMarketplace(PRODUCTS);}
+function install(){if(!document.getElementById('assistantInput'))return;const st=document.createElement('style');st.textContent='.asst-typing{margin:8px 0;padding:9px 12px;border-radius:12px;background:var(--paper-dim,#f3ecdd);font-size:12px;color:var(--ink-soft,#6b5d4f)}.tdot{animation:tdblink 1s infinite}.tpulse{animation:tdpulse 1s infinite}@keyframes tdblink{50%{opacity:.2}}@keyframes tdpulse{50%{opacity:1}}.td-photo{position:relative!important;padding:0!important;height:210px!important;overflow:hidden}.td-photo img{width:100%;height:100%;object-fit:cover;display:block}.td-ai{position:absolute;right:10px;top:10px;background:var(--indigo,#2a4b54);color:#fff;padding:5px 9px;border-radius:999px;font-size:11px}#thedalVoiceBtn{margin-right:5px}';document.head.appendChild(st);installVoice();installMarketplace();}
+window.addEventListener('load',()=>setTimeout(install,250));setTimeout(install,700);status('⚪ Thedal AI');
+})();
